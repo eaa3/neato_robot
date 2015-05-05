@@ -16,5 +16,5 @@ You can check this out into your catkin workspace as follows:
  * The driver has been changed from the original version in order to support a wider range of neato models and firmware versions.
  * This node works with Indigo. The required third parameter to rospy.Publisher() has been supplied.
  * A minor issue in xv11::setMotors() has been fixed. Due to incorrect indentation in that function neato used to slowly crawl forward.
- * Fixed bug that was preventing driver to correctly receive odometry readings (removed alphanumeric robot response filtering)
+ * Fixed bug that was preventing driver to correctly receive odometry readings (removed alphanumeric filtering of robot response)
 

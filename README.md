@@ -17,4 +17,7 @@ You can check this out into your catkin workspace as follows:
  * This node works with Indigo. The required third parameter to rospy.Publisher() has been supplied.
  * A minor issue in xv11::setMotors() has been fixed. Due to incorrect indentation in that function neato used to slowly crawl forward.
  * Fixed bug that was preventing driver to correctly receive odometry readings (removed alphanumeric filtering of robot response)
+ 
+## Tested robot
+ * This node works fine with Neato XV-14
 

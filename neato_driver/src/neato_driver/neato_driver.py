@@ -137,7 +137,11 @@ class xv11():
         response = self.readResponseString()
         for line in response.splitlines():
             vals = line.split(",")
-            if len(vals) >= 2 and vals[0].isalpha() and vals[1].isdigit():
+            #if len(vals) >= 2:
+            # print vals[0], vals[1], "isAlpha:", vals[0].isalpha(), "isDigit:", vals[1].isdigit(),"isAlphaNum:", vals[0].isalnum()
+
+            #removed vals[0].isalpha() test because Parameter is actually non-alphabetic, e.g. LeftWheel_PositionInMM (it has underline)
+            if len(vals) >= 2 and vals[1].isdigit():
                 self.state[vals[0]] = int(vals[1])
 
     def getMotors(self):
@@ -146,7 +150,10 @@ class xv11():
         self.port.flushInput()
         self.port.write("getmotors\n")
         self.readResponseAndUpdateState()
-        return [self.state["LeftWheel_PositionInMM"],self.state["RightWheel_PositionInMM"]]
+        ret = [self.state["LeftWheel_PositionInMM"],self.state["RightWheel_PositionInMM"]]
+
+        #print "ODOMETRY: ", ret[0], ret[1]
+        return ret
 
     def getAnalogSensors(self):
         """ Update values for analog sensors in the self.state dictionary. """
@@ -180,4 +187,3 @@ class xv11():
     #ButtonAmberDim - Start Button Amber Dim (mutually exclusive of other Button options)
     #ButtonGreenDim - Start Button Green Dim (mutually exclusive of other Button options)
     #ButtonOff - Start Button Off
-

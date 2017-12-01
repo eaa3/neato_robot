@@ -60,12 +60,17 @@ class xv11():
         self.port.flushInput()
         self.port.write("\n")
         self.setTestMode("on")
-        self.setLDS("on")
+        # self.setLDS("on")
+        # self.setEnableBrush()
+        # self.setBrushRPM(100)
+        # self.setVacuum("on")
 
     def exit(self):
         self.port.flushInput()
         self.port.write("\n")
-        self.setLDS("off")
+        # self.setLDS("off")
+        # self.setVacuum("off")
+        # self.setDisableBrush()
         self.setTestMode("off")
 
     def setTestMode(self, value):
@@ -130,6 +135,24 @@ class xv11():
         else:
             self.stop_state = False
         self.port.write("setmotor "+str(int(l))+" "+str(int(r))+" "+str(int(s))+"\n")
+
+    def setVacuum(self,value):
+        self.port.write("setmotor vacuum" + value +"\n")
+
+    def setEnableBrush(self):
+        self.port.write("setmotor brushenable\n")
+        self.readResponseString()
+
+    def setDisableBrush(self):
+        self.port.write("setmotor brushdisable\n")
+        self.readResponseString()
+
+    def setBrushRPM(self,rpm):
+        self.port.write("setmotor rpm " + str(int(rpm)) + " brush\n")
+
+    def setVacuumOff(self):
+        self.port.write("setmotor vacuumoff\n")
+
 
     def readResponseAndUpdateState(self):
         """ Read neato's response and update self.state dictionary.

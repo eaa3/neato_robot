@@ -60,7 +60,7 @@ class xv11():
         self.port.flushInput()
         self.port.write("\n")
         self.setTestMode("on")
-        # self.setLDS("on")
+        self.setLDS("on")
         # self.setEnableBrush()
         # self.setBrushRPM(100)
         # self.setVacuum("on")
@@ -68,7 +68,7 @@ class xv11():
     def exit(self):
         self.port.flushInput()
         self.port.write("\n")
-        # self.setLDS("off")
+        self.setLDS("off")
         # self.setVacuum("off")
         # self.setDisableBrush()
         self.setTestMode("off")

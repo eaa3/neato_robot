@@ -7,4 +7,4 @@
 # botler local IP: 192.168.0.8
 botler_ip=192.168.0.8
 botler_port=3333
-socat pty,link=$HOME/neatobot,waitslave tcp:$botler_ip:$botler_port,forever,reuseaddr,keepalive
+socat pty,link=$HOME/neatobot,waitslave,ignoreeof tcp:$botler_ip:$botler_port,forever,reuseaddr,keepalive
